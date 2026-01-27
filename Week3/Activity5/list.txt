@@ -1,0 +1,52 @@
+DesktopComputer{
+    PowerSupply{
+        Brand
+        Model
+        Wattage
+    }
+    Motherboard{
+        Brand
+        Model
+        PCIEDevices[]{
+            PCIEDevice{
+                Type GPU
+                Brand Nvidia
+                DeviceName GT730
+            }
+            PCIEDevice{
+                Type NIC
+                Brand Realtek
+                Model RTL8125B
+            }
+        }       
+        MemoryDevices[]{
+            Memory{
+                Brand TeamGroup
+                Size 8
+            }
+            Memory{
+                Brand TeamGroup
+                Size 8
+            }
+        }
+        Processor{
+            Model
+        }
+    }
+    Peripherals{
+        Peripheral{
+            Name Philips Monitor
+            Type Monitor
+        }
+        Peripheral{
+            Name Mouse
+            Type HID
+        }
+        Peripheral{
+            Name Keyboard
+            Type HID
+        }
+    }
+}
+
+
