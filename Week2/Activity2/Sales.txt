@@ -1,0 +1,24 @@
+Order of : zed
+
+Items bought :
+-------------------
+C2Tea           ₱16.00 x 1 = ₱16.00 
+Total : ₱16.00
+
+-------------------
+Paid    : 20.00
+Change  : 4.00 
+
+
+Order of : carlo
+
+Items bought :
+-------------------
+Skyflakes       ₱8.00  x 5 = ₱40.00 
+Total : ₱40.00
+
+-------------------
+Paid    : 50.00
+Change  : 10.00
+
+
