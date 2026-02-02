@@ -83,6 +83,7 @@ public class EnhancedGrocery {
                     addToCart(p, quantity);
                     break;
                 } catch (InputMismatchException e) {
+                    input.nextLine();
                     out.println("Cannot accept anything other than integers as input");
                 }
             }
@@ -220,8 +221,9 @@ public class EnhancedGrocery {
                 for (char c : strInput.toCharArray()) {
                     if (!Character.isDigit(c)) {
                         out.println("Cannot accept anything other than integers");
+                        continue;
                     }
-                    continue;
+                    break;
                 }
                 pay = Double.parseDouble(strInput);
                 break;
