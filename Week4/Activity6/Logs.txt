@@ -1,0 +1,41 @@
+Registration
+1. DVD
+2. VCD
+3. Tape
+Input Type
+Input Title
+1
+Input Genre
+1. Horror
+2. Scifi
+3. Drama
+4. Comedy
+5. Cartoon
+1
+Duration
+1
+Setting
+1
+Transaction Type
+1. Rental
+2. Sales
+1
+Price
+1
+Register Another? yes / no
+1
+
+REPORTS
+Transactions-----------------------
+For Rent        : 1
+For Sale        : 0
+Media type-------------------------
+DVD Total       : 1
+VCD Total       : 0
+Tape Total      : 0
+Genre Totals-----------------------
+Horror Movies   : 1
+Scifi Movies    : 0
+Drama Movies    : 0
+Comedy Movies   : 0
+Cartoon Movies  : 0

@@ -1,0 +1,4 @@
+names      ages  
+Samantha   5     
+David      4     
+Carlo      6     
