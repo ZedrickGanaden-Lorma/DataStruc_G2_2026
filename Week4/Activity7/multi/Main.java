@@ -1,22 +1,13 @@
-package com.zedrick.multi;
-
 import java.util.Scanner;
-
-import com.zedrick.multi.Grocery.*;
-import com.zedrick.multi.Enrollment.*;
-import com.zedrick.multi.MovieRental.*;;
 
 public class Main {
     static Scanner input = new Scanner(System.in);
-    static String menu = """
-            Please select one of the following.
-            [1] Grocery Shopper
-            [2] Movie Rental
-            [3] Colleges Enrollment
 
-            [x] Exit
-
-            """;
+    static void pause() {
+        System.out.println("Press enter to continue");
+        input.nextLine();
+        System.out.println();
+    }
 
     static void selectApp() {
         while (true) {
@@ -24,7 +15,16 @@ public class Main {
             char in = ' ';
             // Input check
             while (true) {
-                System.out.println(menu);
+                System.out.println("""
+                        Please select one of the following.
+                        [1] Grocery Shopper
+                        [2] Movie Rental
+                        [3] Colleges Enrollment
+
+                        [x] Exit
+
+                        """);
+
                 System.out.print("Choice : ");
                 in = input.nextLine().toLowerCase().charAt(0);
                 boolean hasInvalid = true;
@@ -39,6 +39,7 @@ public class Main {
                 }
                 if (hasInvalid) {
                     System.err.printf("%n%s - not accepted as input%n", in);
+                    pause();
                     continue;
                 }
                 break;
