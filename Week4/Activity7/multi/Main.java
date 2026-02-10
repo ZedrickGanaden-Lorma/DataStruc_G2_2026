@@ -10,52 +10,33 @@ public class Main {
     }
 
     static void selectApp() {
-        while (true) {
+        boolean active = true;
+        while (active) {
             char[] allowed = "123x".toCharArray();
-            char in = ' ';
-            // Input check
-            while (true) {
-                System.out.println("""
-                        Please select one of the following.
-                        [1] Grocery Shopper
-                        [2] Movie Rental
-                        [3] Colleges Enrollment
+            char in = new InputHandler("""
+                    Please select one of the following.
+                    [1] EFM Grocery ShopperMart POS
+                    [2] EFM Movie Rental Registration
+                    [3] Colleges Enrollment
 
-                        [x] Exit
+                    [x] Exit
 
-                        """);
-
-                System.out.print("Choice : ");
-                in = input.nextLine().toLowerCase().charAt(0);
-                boolean hasInvalid = true;
-                for (char match : allowed) {
-                    // System.out.println("Checking if " + match + " == " + in + " " + (in ==
-                    // match));
-                    if (in == match) {
-                        hasInvalid = false;
-                        break;
-                    }
-
-                }
-                if (hasInvalid) {
-                    System.err.printf("%n%s - not accepted as input%n", in);
-                    pause();
-                    continue;
-                }
-                break;
-            }
+                    Choice : """)
+                    .setAllowedChars(allowed)
+                    .noPauseOnError()
+                    .nextChar();
             switch (in) {
                 case '1':
                     Grocery.main(null);
-                    break;
+                    continue;
                 case '2':
                     Rental.main(null);
-                    break;
+                    continue;
                 case '3':
                     Enrollment.main(null);
-                    break;
+                    continue;
                 case 'x':
-                    System.exit(0);
+                    active = false;
             }
         }
     }
@@ -63,5 +44,8 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to EFM Systems");
         selectApp();
+        System.out.println("""
+                Thank you for using EFM Enterprise Systems
+                Good bye""");
     }
 }
