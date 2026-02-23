@@ -1,0 +1,18 @@
+Desktop{
+    String  motherboardBrand
+    String  motherboardModel
+
+    String  cpuModel
+    int     cpuCores
+    double  cpuClockSpeedGHz
+
+    int     memorySize
+    String  memoryType
+
+    int     storageSize
+    String  storageType
+
+    String  gpuModel
+
+    int     powerSupplyWatts
+}
