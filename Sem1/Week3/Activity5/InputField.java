@@ -10,11 +10,11 @@ import java.util.Scanner;
  * 
  */
 public class InputField {
-    /// 0.5     : still is incomplete, so expect bugs or bad documentation
+    /// 0.5 : still is incomplete, so expect bugs or bad documentation
     /// 
-    /// 0.5.1   : Added float input
+    /// 0.5.1 : Added float input
     /// 
-    /// 0.5.2   : Added configurable prompt message on Input & Getter methods
+    /// 0.5.2 : Added configurable prompt message on Input & Getter methods
     private static String version = "0.5.2";
 
     /// The message presented to the user when calling setters.
@@ -33,7 +33,9 @@ public class InputField {
      * 
      * 
      */
-    public InputField() {}
+    public InputField() {
+    }
+
     public InputField(String prompt) {
         this.prompt = prompt;
     }
@@ -113,7 +115,7 @@ public class InputField {
 
     // Messages
 
-    public InputField setPrompt(String prompt){
+    public InputField setPrompt(String prompt) {
         this.prompt = prompt;
         return this;
     }
@@ -182,7 +184,7 @@ public class InputField {
                             if (ch == match) {
                                 charMismatch = false;
                                 break;
-                            }else{
+                            } else {
                                 charMismatch = true;
                             }
                         }
@@ -267,7 +269,7 @@ public class InputField {
                             if (ch == match) {
                                 charMismatch = false;
                                 break;
-                            }else{
+                            } else {
                                 charMismatch = true;
                             }
                         }
@@ -352,7 +354,7 @@ public class InputField {
                             if (ch == match) {
                                 charMismatch = false;
                                 break;
-                            }else{
+                            } else {
                                 charMismatch = true;
                             }
                         }
@@ -454,7 +456,7 @@ public class InputField {
                             if (ch == match) {
                                 charMismatch = false;
                                 break;
-                            }else{
+                            } else {
                                 charMismatch = true;
                             }
                         }

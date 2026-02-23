@@ -8,7 +8,7 @@ public class Desktop {
     // CPU
     private String cpuModel = "";
     private int cpuCores = 0;
-    private double cpuClockSpeedGHz = 0;
+    private double cpuClockGHz = 0;
 
     // RAM
     private int memorySize = 0;
@@ -36,12 +36,16 @@ public class Desktop {
     public void setCPUSpecs(String cpuModel, int cpuCores, double cpuClockSpeedGHz) {
         this.cpuModel = cpuModel;
         this.cpuCores = cpuCores;
-        this.cpuClockSpeedGHz = cpuClockSpeedGHz;
+        this.cpuClockGHz = cpuClockSpeedGHz;
     }
 
     public void setMemorySpecs(int memorySize, String memoryType) {
         this.memorySize = memorySize;
         this.memoryType = memoryType;
+    }
+
+    public void setGPUSpecs(String gpuModel) {
+        this.gpuModel = gpuModel;
     }
 
     public void setStorageSpecs(int storageSize, String storageType) {
@@ -55,7 +59,7 @@ public class Desktop {
 
     public void displayHeader() {
         System.out.printf("""
-                %-15s%-20s%-20s%-20s%-20s%-20s%-20s
+                %-15s%-30s%-30s%-20s%-20s%-20s%-20s
                 """, "Unit Number", "Motherboard", "CPU", "Memory", "Storage", "GPU", "PSU");
     }
 
@@ -76,21 +80,21 @@ public class Desktop {
     public void displaySpecs() {
         String memorySizeString = appendUnit(memorySize, "GB");
         String storageSizeString = appendUnit(storageSize, "GB");
-        String psuWattageString = appendUnit(powerSupplyWatts, " W");
+        String psuWattageString = appendUnit(powerSupplyWatts, "W");
         String cpuCoresString = appendUnit(cpuCores, "C");
-        String cpuClockSpeedGHzString = appendUnit(cpuClockSpeedGHz, "GHz");
+        String cpuClockGHzString = appendUnit(cpuClockGHz, "GHz");
         System.out.printf("""
-                %-15s%-20s%-20s%-20s%-20s%-20s%-20s
+                %-15s%-30s%-30s%-20s%-20s%-20s%-20s
                 """, "Unit #" + unitNum, "Brand : " + motherboardBrand, "Model : " + cpuModel,
                 "Size : " + memorySizeString,
                 "Size : " + storageSizeString, "Model : " + gpuModel, "Wattage : " + psuWattageString);
         System.out.printf("""
-                %-15s%-20s%-20s%-20s%-20s
+                %-15s%-30s%-30s%-20s%-20s
                 """, "", "Model : " + motherboardModel, "Cores : " + cpuCoresString, "Type : " + memoryType,
                 "Type : " + storageType);
         System.out.printf("""
-                %-15s%-20s%-20s
-                """, "", "", "Speed : " + cpuClockSpeedGHzString);
+                %-15s%-30s%-30s
+                """, "", "", "Speed : " + cpuClockGHzString);
     }
 
     public void inputMotherboardSpecs() {
@@ -103,7 +107,7 @@ public class Desktop {
         System.out.println("CPU");
         this.cpuModel = new InputField("Enter model : ").nextString();
         this.cpuCores = new InputField("Enter cores : ").nextInt();
-        this.cpuClockSpeedGHz = new InputField("Enter speed : ").nextDouble();
+        this.cpuClockGHz = new InputField("Enter speed : ").nextDouble();
     }
 
     public void inputMemorySpecs() {
@@ -118,6 +122,11 @@ public class Desktop {
         this.storageType = new InputField("Enter type : ").nextString();
     }
 
+    public void inputGPUSpecs() {
+        System.out.println("Graphics Processing Unit");
+        this.gpuModel = new InputField("Enter model : ").nextString();
+    }
+
     public void inputPSUWattage() {
         System.out.println("Power Supply Unit");
         this.powerSupplyWatts = new InputField("Enter wattage : ").nextInt();
@@ -129,6 +138,7 @@ public class Desktop {
         inputCPUSpecs();
         inputMemorySpecs();
         inputStorageSpecs();
+        inputGPUSpecs();
         inputPSUWattage();
     }
 }
