@@ -57,20 +57,30 @@ public class Desktop {
         this.powerSupplyWatts = powerSupplyWatts;
     }
 
+    public static String getCSVHeader() {
+        return "unitNumber,MotherboardBrand,MotherboardModel,CPUModel,CPUCores,CPUSpeedGHz,MemorySizeGB,MemoryType,StorageSizeGB,StorageType,GPUModel,PSUWattage";
+    }
+
+    public String getCSVData() {
+        return unitNum + "," + motherboardBrand + "," + motherboardModel + "," + cpuModel + "," + cpuCores + ","
+                + cpuClockGHz + "," + memorySize + "," + memoryType + "," + storageSize + "," + storageType + ","
+                + gpuModel + "," + powerSupplyWatts;
+    }
+
     public void displayHeader() {
         System.out.printf("""
                 %-15s%-30s%-30s%-20s%-20s%-20s%-20s
                 """, "Unit Number", "Motherboard", "CPU", "Memory", "Storage", "GPU", "PSU");
     }
 
-    public String appendUnit(Double n, String unit) {
+    private String appendUnit(Double n, String unit) {
         if (n <= 0) {
             return "";
         }
         return n + " " + unit;
     }
 
-    public String appendUnit(int n, String unit) {
+    private String appendUnit(int n, String unit) {
         if (n <= 0) {
             return "";
         }

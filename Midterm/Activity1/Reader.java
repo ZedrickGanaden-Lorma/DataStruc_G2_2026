@@ -1,11 +1,15 @@
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Reader {
-    public static void main(String[] args) {
-        ArrayList<Desktop> desktops = new ArrayList<>();
+    public static ArrayList<Desktop> desktops = new ArrayList<>();
+
+    public static void loadData() {
         try (Scanner scanner = new Scanner(new File("DesktopList.csv"))) {
             scanner.nextLine();
             while (scanner.hasNextLine()) {
@@ -24,9 +28,55 @@ public class Reader {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void saveData() {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File("DesktopList.csv")))) {
+            bw.write(Desktop.getCSVHeader() + "\n");
+            for (Desktop d : desktops) {
+                bw.write(d.getCSVData() + "\n");
+            }
+            bw.flush();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void displayList() {
         desktops.get(0).displayHeader();
         for (Desktop d : desktops) {
             d.displaySpecs();
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        loadData();
+        displayList();
+        app: while (true) {
+            int choice = new InputField("""
+                    [1] Register new desktop
+                    [2] List desktops
+                    [3] Save Data
+                    [0] Exit
+                    """).max(3).min(0).nextInt();
+            switch (choice) {
+                case 0:
+                    break app;
+                case 1:
+                    Desktop desktop = new Desktop();
+                    desktop.inputAllSpecs();
+                    desktops.add(desktop);
+                    break;
+                case 2:
+                    displayList();
+                    break;
+                case 3:
+                    saveData();
+                    break;
+            }
         }
     }
 }
