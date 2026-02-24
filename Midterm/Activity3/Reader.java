@@ -30,52 +30,22 @@ public class Reader {
         }
     }
 
-    public static void saveData() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File("DesktopList.txt")))) {
-            bw.write(Desktop.getCSVHeader() + "\n");
-            for (Desktop d : desktops) {
-                bw.write(d.getCSVData() + "\n");
-            }
-            bw.flush();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void displayList() {
-        desktops.get(0).displayHeader();
-        for (Desktop d : desktops) {
-            d.displaySpecs();
-            System.out.println();
-        }
-    }
-
     public static void main(String[] args) {
         loadData();
-        displayList();
         app: while (true) {
             int choice = new InputField("""
-                    [1] Register new desktop
-                    [2] List desktops
-                    [3] Save Data
+                    [1] Add Desktop
+                    [2] Search
+                    [3] Edit
+                    [4] Delete
+                    [5] Sort
+                    [6] List
+
                     [0] Exit
-                    """).max(3).min(0).nextInt();
+                    """).max(6).min(0).nextInt();
             switch (choice) {
                 case 0:
                     break app;
-                case 1:
-                    Desktop desktop = new Desktop();
-                    desktop.inputAllSpecs();
-                    desktops.add(desktop);
-                    break;
-                case 2:
-                    displayList();
-                    break;
-                case 3:
-                    saveData();
-                    break;
             }
         }
     }
