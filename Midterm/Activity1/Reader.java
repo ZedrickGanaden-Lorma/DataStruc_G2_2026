@@ -10,7 +10,7 @@ public class Reader {
     public static ArrayList<Desktop> desktops = new ArrayList<>();
 
     public static void loadData() {
-        try (Scanner scanner = new Scanner(new File("DesktopList.csv"))) {
+        try (Scanner scanner = new Scanner(new File("DesktopList.txt"))) {
             scanner.nextLine();
             while (scanner.hasNextLine()) {
                 String[] line = scanner.nextLine().split(",");
@@ -31,7 +31,7 @@ public class Reader {
     }
 
     public static void saveData() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File("DesktopList.csv")))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File("DesktopList.txt")))) {
             bw.write(Desktop.getCSVHeader() + "\n");
             for (Desktop d : desktops) {
                 bw.write(d.getCSVData() + "\n");
