@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Reader {
+public class DesktopRegistration {
     public static ArrayList<Desktop> desktops = new ArrayList<>();
 
     public static void loadData() {
@@ -30,10 +30,19 @@ public class Reader {
         }
     }
 
+    public static void displayList() {
+        desktops.get(0).displayHeader();
+        for (Desktop d : desktops) {
+            d.displaySpecs();
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
         loadData();
         app: while (true) {
             int choice = new InputField("""
+                    Computer Unit Registration
                     [1] Add Desktop
                     [2] Search
                     [3] Edit
@@ -46,6 +55,24 @@ public class Reader {
             switch (choice) {
                 case 0:
                     break app;
+                case 1:
+                    Desktop newDesktop = new Desktop();
+                    newDesktop.inputAllSpecs();
+                    desktops.add(newDesktop);
+                    break;
+                case 2:
+                    int searchChoice = new InputField("""
+                            Search by :
+                            [1] Unit Number
+                            [2] Motherboard
+                            [3] CPU
+                            [4] Memory
+                            [5] Storage
+                            [6] GPU
+                            [7] PSU
+                            """).min(1).max(7).nextInt();
+                case 6:
+                    displayList();
             }
         }
     }

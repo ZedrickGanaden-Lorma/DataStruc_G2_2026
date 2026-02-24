@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Reader {
+public class DesktopRegistration {
     public static ArrayList<String[]> desktops = new ArrayList<String[]>();
 
     public static void loadData() {

@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Reader {
+public class DesktopRegistration {
     public static ArrayList<Desktop> desktops = new ArrayList<>();
 
     public static void loadData() {
@@ -29,13 +29,6 @@ public class Reader {
             e.printStackTrace();
         }
     }
-    public static void displayList() {
-        desktops.get(0).displayHeader();
-        for (Desktop d : desktops) {
-            d.displaySpecs();
-            System.out.println();
-        }
-    }
 
     public static void main(String[] args) {
         loadData();
@@ -53,8 +46,6 @@ public class Reader {
             switch (choice) {
                 case 0:
                     break app;
-                case 6:
-                    displayList();
             }
         }
     }
