@@ -61,18 +61,102 @@ public class DesktopRegistration {
                     desktops.add(newDesktop);
                     break;
                 case 2:
-                    int searchChoice = new InputField("""
+                    int searchCategory = new InputField("""
                             Search by :
-                            [1] Unit Number
-                            [2] Motherboard
-                            [3] CPU
-                            [4] Memory
-                            [5] Storage
-                            [6] GPU
-                            [7] PSU
+                            [1] Unit number
+                            [2] Motherboard brand
+                            [3] CPU model
+                            [4] Memory type
+                            [5] Storage size
+                            [6] GPU model
+                            [7] PSU wattage
                             """).min(1).max(7).nextInt();
+                    String keyword = new InputField("""
+                            Search : """).nextString();
+                    boolean match = false;
+                    Search: switch (searchCategory) {
+                        case 1:
+                            for (Desktop d : desktops) {
+                                if (keyword.equals(d.getUnitNum() + "")) {
+                                    match = true;
+                                    d.displaySpecs();
+                                }
+                            }
+                            if (match)
+                                break Search;
+                            System.out.println(keyword + " Not found");
+                            break;
+                        case 2:
+                            for (Desktop d : desktops) {
+                                if (keyword.equals(d.getMotherboardBrand())) {
+                                    match = true;
+                                    d.displaySpecs();
+                                }
+                            }
+                            if (match)
+                                break Search;
+                            System.out.println(keyword + " Not found");
+                            break;
+                        case 3:
+                            for (Desktop d : desktops) {
+                                if (keyword.equals(d.getCpuModel())) {
+                                    match = true;
+                                    d.displaySpecs();
+                                }
+                            }
+                            if (match)
+                                break Search;
+                            System.out.println(keyword + " Not found");
+                            break;
+                        case 4:
+                            for (Desktop d : desktops) {
+                                if (keyword.equals(d.getMemoryType())) {
+                                    match = true;
+                                    d.displaySpecs();
+                                }
+                            }
+                            if (match)
+                                break Search;
+                            System.out.println(keyword + " Not found");
+                            break;
+                        case 5:
+                            for (Desktop d : desktops) {
+                                if (keyword.equals(d.getStorageSize() + "")) {
+                                    match = true;
+                                    d.displaySpecs();
+                                }
+                            }
+                            if (match)
+                                break Search;
+                            System.out.println(keyword + " Not found");
+                            break;
+                        case 6:
+                            for (Desktop d : desktops) {
+                                if (keyword.equals(d.getGpuModel())) {
+                                    match = true;
+                                    d.displaySpecs();
+                                }
+                            }
+                            if (match)
+                                break Search;
+                            System.out.println(keyword + " Not found");
+                            break;
+                        case 7:
+                            for (Desktop d : desktops) {
+                                if (keyword.equals(d.getPowerSupplyWatts() + "")) {
+                                    match = true;
+                                    d.displaySpecs();
+                                }
+                            }
+                            if (match)
+                                break Search;
+                            System.out.println(keyword + " Not found");
+                            break;
+                    }
+                    break;
                 case 6:
                     displayList();
+                    break;
             }
         }
     }

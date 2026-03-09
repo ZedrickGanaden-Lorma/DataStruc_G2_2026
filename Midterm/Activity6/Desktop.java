@@ -23,6 +23,54 @@ public class Desktop {
 
     // Power
     private int powerSupplyWatts = 0;
+    
+    public int getUnitNum() {
+        return unitNum;
+    }
+
+    public String getMotherboardBrand() {
+        return motherboardBrand;
+    }
+
+    public String getMotherboardModel() {
+        return motherboardModel;
+    }
+
+    public String getCpuModel() {
+        return cpuModel;
+    }
+
+    public int getCpuCores() {
+        return cpuCores;
+    }
+
+    public double getCpuClockGHz() {
+        return cpuClockGHz;
+    }
+
+    public int getMemorySize() {
+        return memorySize;
+    }
+
+    public String getMemoryType() {
+        return memoryType;
+    }
+
+    public int getStorageSize() {
+        return storageSize;
+    }
+
+    public String getStorageType() {
+        return storageType;
+    }
+
+    public String getGpuModel() {
+        return gpuModel;
+    }
+
+    public int getPowerSupplyWatts() {
+        return powerSupplyWatts;
+    }
 
     public Desktop() {
         unitNum = unitCounter++;
