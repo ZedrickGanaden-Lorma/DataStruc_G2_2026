@@ -1,6 +1,4 @@
 public class Desktop {
-    private static int unitCounter = 0;
-    private int unitNum = 0;
     // Motherboard
     private String motherboardBrand = "";
     private String motherboardModel = "";
@@ -23,10 +21,6 @@ public class Desktop {
 
     // Power
     private int powerSupplyWattage = 0;
-
-    public int getUnitNum() {
-        return unitNum;
-    }
 
     public String getMotherboardBrand() {
         return motherboardBrand;
@@ -73,7 +67,6 @@ public class Desktop {
     }
 
     public Desktop() {
-        unitNum = unitCounter++;
     }
 
     public void setMotherboardSpecs(String motherboardBrand, String motherboardModel) {
@@ -146,7 +139,7 @@ public class Desktop {
     }
 
     public String getCSVData() {
-        return unitNum + "," + motherboardBrand + "," + motherboardModel + "," + cpuModel + "," + cpuCores + ","
+        return motherboardBrand + "," + motherboardModel + "," + cpuModel + "," + cpuCores + ","
                 + cpuClockGHz + "," + memorySize + "," + memoryType + "," + storageSize + "," + storageType + ","
                 + gpuModel + "," + powerSupplyWattage;
     }
@@ -178,8 +171,8 @@ public class Desktop {
         String cpuCoresString = appendUnit(cpuCores, "C");
         String cpuClockGHzString = appendUnit(cpuClockGHz, "GHz");
         System.out.printf("""
-                %-15s%-30s%-30s%-20s%-20s%-20s%-20s
-                """, "Unit #" + unitNum, "Brand : " + motherboardBrand, "Model : " + cpuModel,
+                %-30s%-30s%-20s%-20s%-20s%-20s
+                """, "Brand : " + motherboardBrand, "Model : " + cpuModel,
                 "Size : " + memorySizeString,
                 "Size : " + storageSizeString, "Model : " + gpuModel, "Wattage : " + psuWattageString);
         System.out.printf("""

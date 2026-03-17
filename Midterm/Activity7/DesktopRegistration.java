@@ -17,12 +17,12 @@ public class DesktopRegistration {
                 Desktop d = new Desktop();
                 // Double.parseDouble(line[])
                 // Integer.parseInt(line[])
-                d.setMotherboardSpecs(line[1], line[2]);
-                d.setCPUSpecs(line[3], Integer.parseInt(line[4]), Double.parseDouble(line[5]));
-                d.setMemorySpecs(Integer.parseInt(line[6]), line[7]);
-                d.setStorageSpecs(Integer.parseInt(line[8]), line[9]);
-                d.setGPUModel(line[10]);
-                d.setPSUWattage(Integer.parseInt(line[11]));
+                d.setMotherboardSpecs(line[0], line[1]);
+                d.setCPUSpecs(line[2], Integer.parseInt(line[3]), Double.parseDouble(line[4]));
+                d.setMemorySpecs(Integer.parseInt(line[5]), line[6]);
+                d.setStorageSpecs(Integer.parseInt(line[7]), line[8]);
+                d.setGPUModel(line[9]);
+                d.setPSUWattage(Integer.parseInt(line[10]));
                 desktops.add(d);
             }
         } catch (FileNotFoundException e) {
@@ -32,7 +32,9 @@ public class DesktopRegistration {
 
     public static void displayList() {
         Desktop.displayHeader();
+        int x = 0;
         for (Desktop d : desktops) {
+            System.out.printf("%-15s", "Unit #" + x++);
             d.displaySpecs();
             System.out.println();
         }
@@ -71,25 +73,24 @@ public class DesktopRegistration {
                             [6] GPU model
                             [7] PSU wattage
                             """).min(1).max(7).nextInt();
-                    String keyword = new InputField("""
-                            Search : """).nextString();
+                    InputField searchField = new InputField("""
+                            Search : """);
+                    String keyword;
                     boolean match = false;
                     Search: switch (searchCategory) {
-                        case 1:
-                            for (Desktop d : desktops) {
-                                if (keyword.equals(d.getUnitNum() + "")) {
-                                    match = true;
-                                    d.displaySpecs();
-                                }
-                            }
-                            if (match)
-                                break Search;
-                            System.out.println(keyword + " Not found");
+                        case 1: {
+                            Desktop d = desktops.get(searchField.min(0)
+                                    .max(desktops.size() - 1).nextInt());
+                            System.out.printf("%-15s", "Unit #" + desktops.indexOf(d));
+                            d.displaySpecs();
+                        }
                             break;
                         case 2:
+                            keyword = searchField.nextString();
                             for (Desktop d : desktops) {
                                 if (keyword.equals(d.getMotherboardBrand())) {
                                     match = true;
+                                    System.out.printf("%-15s", "Unit #" + desktops.indexOf(d));
                                     d.displaySpecs();
                                 }
                             }
@@ -98,9 +99,11 @@ public class DesktopRegistration {
                             System.out.println(keyword + " Not found");
                             break;
                         case 3:
+                            keyword = searchField.nextString();
                             for (Desktop d : desktops) {
                                 if (keyword.equals(d.getCpuModel())) {
                                     match = true;
+                                    System.out.printf("%-15s", "Unit #" + desktops.indexOf(d));
                                     d.displaySpecs();
                                 }
                             }
@@ -109,9 +112,11 @@ public class DesktopRegistration {
                             System.out.println(keyword + " Not found");
                             break;
                         case 4:
+                            keyword = searchField.nextString();
                             for (Desktop d : desktops) {
                                 if (keyword.equals(d.getMemoryType())) {
                                     match = true;
+                                    System.out.printf("%-15s", "Unit #" + desktops.indexOf(d));
                                     d.displaySpecs();
                                 }
                             }
@@ -120,9 +125,11 @@ public class DesktopRegistration {
                             System.out.println(keyword + " Not found");
                             break;
                         case 5:
+                            keyword = searchField.nextString();
                             for (Desktop d : desktops) {
                                 if (keyword.equals(d.getStorageSize() + "")) {
                                     match = true;
+                                    System.out.printf("%-15s", "Unit #" + desktops.indexOf(d));
                                     d.displaySpecs();
                                 }
                             }
@@ -131,9 +138,11 @@ public class DesktopRegistration {
                             System.out.println(keyword + " Not found");
                             break;
                         case 6:
+                            keyword = searchField.nextString();
                             for (Desktop d : desktops) {
                                 if (keyword.equals(d.getGpuModel())) {
                                     match = true;
+                                    System.out.printf("%-15s", "Unit #" + desktops.indexOf(d));
                                     d.displaySpecs();
                                 }
                             }
@@ -142,9 +151,11 @@ public class DesktopRegistration {
                             System.out.println(keyword + " Not found");
                             break;
                         case 7:
+                            keyword = searchField.nextString();
                             for (Desktop d : desktops) {
                                 if (keyword.equals(d.getPowerSupplyWattage() + "")) {
                                     match = true;
+                                    System.out.printf("%-15s", "Unit #" + desktops.indexOf(d));
                                     d.displaySpecs();
                                 }
                             }
@@ -161,6 +172,7 @@ public class DesktopRegistration {
                             .nextInt();
                     Desktop selected = desktops.get(index);
                     Desktop.displayHeader();
+                    System.out.printf("%-15s", "Unit #" + desktops.indexOf(selected));
                     selected.displaySpecs();
                     int editCategory = new InputField("""
                             Edit category :
